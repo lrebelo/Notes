@@ -6,7 +6,7 @@
 
 **xe host-cpu-info** - used to get full list of details of the CPU arch
 
-**xe host-set-cpu-features features=<FEATURES>** - If we need to *fake* the CPU flags for whatever reason..
+**xe host-set-cpu-features features=FEATURES** - If we need to *fake* the CPU flags for whatever reason..
 
-**http://<SERVERIP>/export?uuid=<VM_UUID>** - quick and easy way to get and export of a *powered off* xen machine
+**http://SERVERIP/export?uuid=VM_UUID** - quick and easy way to get and export of a *powered off* xen machine
 

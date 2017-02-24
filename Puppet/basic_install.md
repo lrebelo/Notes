@@ -5,7 +5,11 @@ The following is based on the open source project and both master and agent are 
 
 ###How to setup the master. 
 Define the hostname in /etc/hosts and /etc/hostname ( for example puppet-master ). 
-Install the ntp server with sudo apt-get install ntp and add the repositories by downloading: 
+
+Install the ntp server with 
+> sudo apt-get install ntp 
+
+and add the repositories by downloading: 
 > wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb 
 
 and running 
@@ -24,10 +28,12 @@ Start the service with
 
 > sudo service puppetserver start
 
-Depending on the hardware you're running the master, you might want to change the memory allocation; do so by changing /etc/default/puppetserver on the line that reads 
+Depending on the hardware you're running the master, you might want to change the memory allocation.
+Do so by changing **/etc/default/puppetserver** on the line that reads 
 
-> Modify this if you'd like to change the memory allocation, enable JMX, etc JAVA_ARGS="-Xms2g -Xmx2g -XX:MaxPermSize=256m" ( the 2g stands fro 2gb; change it accordignly where 512m will be 512Mb and so on ). 
-> Start the service with sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true.
+Modify this if you'd like to change the memory allocation, enable JMX, etc *JAVA_ARGS="-Xms2g -Xmx2g -XX:MaxPermSize=256m"* ( the 2g stands fro 2gb; change it accordignly where 512m will be 512Mb and so on ). 
+Start the service with 
+> sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true.
 
 ###Install an agent. 
 Define the hostname in **/etc/hosts** and **/etc/hostname** ( for example puppet-agent ) unless previously defined. 
@@ -62,11 +68,13 @@ From this point on, the agent will sync ( every 30 mins by default ) with the ma
 To test the setup, open the manifest sudo nano /etc/puppetlabs/code/environments/production/manifests/site.pp 
 on the master and add the following file {'/tmp/hello': ensure => present, mode => '0644', content => "Hello from the master\n", } ; force the sync on the agent with sudo /opt/puppetlabs/bin/puppet agent --test. Now on the agent you should have a newly created file called hello ( inside the tmp folder ) with a string saying "Hello from the master".
 
-The manifest as it is, will target all the agents connected to the master; to target specific agents, use the following: 
+The manifest as it is, will target all the agents connected to the master.
+To target specific agents, use the following: 
 > node 'hostname1', 'hostname2' {file {'/tmp/hello': ensure => present, 
 > mode => '0644', 
 > content => "Hello from the master\n", 
 > } }. 
+
 The following will apply to all agents: 
 > node default { file {'/tmp/hello': 
 > ensure => present, 
@@ -76,8 +84,11 @@ The following will apply to all agents:
 
 To install a module ( in this example the Apache one ), run 
 > sudo /opt/puppetlabs/bin/puppet module install puppetlabs-apache on the **master** ( this will install the puppet module for apache from the Forge ) . 
+
 Add the required actions to the manifest 
+
 > sudo nano /etc/puppetlabs/code/environments/production/manifests/site.pp;
+
 the list of available instructions can be found on the Forge. In this specific example, we will enable a new Virtual host for test.example.com on port 8080 that roots on /var/www/test . 
 node default { class {'apache' :} 
 apache::vhost { 'test.example.com': 

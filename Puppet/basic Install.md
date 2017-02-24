@@ -7,23 +7,42 @@ The following is based on the open source project and both master and agent are 
 Define the hostname in /etc/hosts and /etc/hostname ( for example puppet-master ). 
 Install the ntp server with sudo apt-get install ntp and add the repositories by downloading: 
 > wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb 
+
 and running 
-> sudo dpkg -i puppetlabs-release-pc1-jessie.deb. 
-Update your repositories with sudo apt-get update. 
-Install the server with sudo apt-get install puppetserver 
-Start the service with sudo service puppetserver start. 
+
+> sudo dpkg -i puppetlabs-release-pc1-jessie.deb
+
+Update your repositories with 
+
+>sudo apt-get update
+ 
+Install the server with 
+
+> sudo apt-get install puppetserver 
+
+Start the service with 
+
+> sudo service puppetserver start
+
 Depending on the hardware you're running the master, you might want to change the memory allocation; do so by changing /etc/default/puppetserver on the line that reads 
-> # Modify this if you'd like to change the memory allocation, enable JMX, etc JAVA_ARGS="-Xms2g -Xmx2g -XX:MaxPermSize=256m" ( the 2g stands fro 2gb; change it accordignly where 512m will be 512Mb and so on ). 
+
+> Modify this if you'd like to change the memory allocation, enable JMX, etc JAVA_ARGS="-Xms2g -Xmx2g -XX:MaxPermSize=256m" ( the 2g stands fro 2gb; change it accordignly where 512m will be 512Mb and so on ). 
 > Start the service with sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true.
 
 ###Install an agent. 
 Define the hostname in **/etc/hosts** and **/etc/hostname** ( for example puppet-agent ) unless previously defined. 
 Install the ntp server with sudo apt-get install ntp and add the repositories by downloading 
+
 > wget https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb 
+
 and running 
-> sudo dpkg -i puppetlabs-release-pc1-jessie.deb. 
+
+> sudo dpkg -i puppetlabs-release-pc1-jessie.deb
+
 Update your repositories with 
-> sudo apt-get update. 
+
+> sudo apt-get update
+
 Install puppet agent with sudo apt-get install puppet-agent. 
 Start the service with sudo service puppetserver start 
 Add the FQDN of the server to the puppet.conf file ( puppet-agent.localdomain ) 
@@ -57,7 +76,9 @@ The following will apply to all agents:
 
 To install a module ( in this example the Apache one ), run 
 > sudo /opt/puppetlabs/bin/puppet module install puppetlabs-apache on the **master** ( this will install the puppet module for apache from the Forge ) . 
-Add the required actions to the manifest sudo nano /etc/puppetlabs/code/environments/production/manifests/site.pp; the list of available instructions can be found on the Forge. In this specific example, we will enable a new Virtual host for test.example.com on port 8080 that roots on /var/www/test . 
+Add the required actions to the manifest 
+> sudo nano /etc/puppetlabs/code/environments/production/manifests/site.pp;
+the list of available instructions can be found on the Forge. In this specific example, we will enable a new Virtual host for test.example.com on port 8080 that roots on /var/www/test . 
 node default { class {'apache' :} 
 apache::vhost { 'test.example.com': 
 port => '8080', docroot => '/var/www/test', docroot_owner => 'www-data', docroot_group => 'www-data', } }.

@@ -1,0 +1,3 @@
+# Puppet Notes
+
+####Quick reference

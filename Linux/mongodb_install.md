@@ -16,12 +16,12 @@ _service mongod start_
 
 _bindIp: 0.0.0.0_ - setup to access from all IPs
 
-#####Security
+####Security
 
 _db.createUser({user: "admin", pwd: "password", roles: [ { role: "userAdminAnyDatabase", db: "admin" }]} )_
 
 _security:_
-_  authorization: "enabled"_  - Only add this after creating the admin user
+_authorization: "enabled"_  - Only add this after creating the admin user
 
 
 ###Assorted Commands

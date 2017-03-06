@@ -10,6 +10,7 @@ _sudo touch NAMEofAPPLICATION.desktop_
 
 then pas in it:
 
+```
 [Desktop Entry]
 Encoding=UTF-8
 Name=NAME of APPLICATION
@@ -20,6 +21,7 @@ Terminal=false
 Type=Application
 Categories=GNOME;Application;Development;
 StartupNotify=true
+```
 
 save and press on the menu to see changes...
 If nothing happens its possibel its just not on the right Categorie OR the path to the bin is incorrect.

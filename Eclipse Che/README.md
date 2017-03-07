@@ -20,7 +20,7 @@ then run.. (this will upgrade and start che)
 
 * _docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -e CHE_HOST=IP_ADDRESS -v /home/user/cd:/data eclipse/che upgrade_
 
-## Eclipse Che update commands
+## Eclipse Che Environment commands and settings
 
 ### Eclipse Che & Maven/Java
 
@@ -31,6 +31,8 @@ Working Directory: ${current.project.path}
 Command Line: clean install
 Preview URL: http://${server.port.6080}
 ```
+
+* For *Maven* to create a JAR file with a manifest add all the contants of the <build> tag example in _pom.xml_ and change your main class & package.
 
 ## Eclipse che install on debian 8
 

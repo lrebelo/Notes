@@ -25,12 +25,15 @@ then run.. (this will upgrade and start che)
 
 _I'll do it next time I do a fresh install..._
 
-###### References..
+
+
+
+##### References..
 
 ```
-<https://eclipse.org/che/docs/setup/managing/index.html>
+https://eclipse.org/che/docs/setup/managing/index.html
 ```
 
 ```
-<https://eclipse.org/che/docs/setup/getting-started/index.html>
+https://eclipse.org/che/docs/setup/getting-started/index.html
 ```

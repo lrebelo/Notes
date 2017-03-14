@@ -9,7 +9,7 @@
 - Run _sudo npm install -g @angular/cli_
 
 
-##Steps..
+## Steps..
 
 _ng new project_ - creates and downloads npm pakages
 

@@ -1,10 +1,10 @@
 # Puppet Notes
 
-####Quick reference
+#### Quick reference
 
 
 
-##Structure
+## Structure
 
 * Master of masters (UI)
 

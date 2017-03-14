@@ -1,6 +1,6 @@
 # Windows Notes
 
-####Assorted Windows reference
+#### Assorted Windows reference
 
 **shutdown -r -f -t 0** - Windows 10 *full* shutdown
 

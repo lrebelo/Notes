@@ -1,6 +1,6 @@
 # Nginx Notes
 
-####Quick reference
+#### Quick reference
 
 
 ## Instalation for debian8
@@ -21,17 +21,11 @@ sudo apt-get install nginx
 
 * Adjust the firewall
 
-    * See the list of apps and 'select' the appropriate one.
+    * See the list of apps and 'select' the appropriate one `sudo ufw app list`
 
-`sudo ufw app list`
+    * After choosing enable the right one.. `sudo ufw allow 'Nginx HTTP'`
 
-    * After choosing enable the right one..
-
-`sudo ufw allow 'Nginx HTTP'`
-
-    * Make sure its active..
-
-`sudo ufw status`
+    * Make sure its active.. `sudo ufw status`
 
 ## Configure Nginx
 

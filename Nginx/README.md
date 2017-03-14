@@ -20,17 +20,20 @@ sudo apt-get install nginx
 ``` 
 
 * Adjust the firewall
-..* See the list of apps and 'select' the appropriate one.
+
+    * See the list of apps and 'select' the appropriate one.
 
 ```
 sudo ufw app list
 ```
-..* After choosing enable the right one..
+
+    * After choosing enable the right one..
 
 ```
 sudo ufw allow 'Nginx HTTP'
 ```
-..* Make sure its active..
+
+    * Make sure its active..
 
 ```
 sudo ufw status
@@ -39,6 +42,11 @@ sudo ufw status
 ## Configure Nginx
 
 * Main configuration in `/etc/nginx/nginx.conf`
+
+`http://nginx.org/en/docs/stream/ngx_stream_proxy_module.html`
+
+`https://www.nginx.com/resources/admin-guide/reverse-proxy/`
+
 
 
 

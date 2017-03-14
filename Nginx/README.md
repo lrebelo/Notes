@@ -20,19 +20,16 @@ sudo apt-get install nginx
 ``` 
 
 * Adjust the firewall
-
 ..* See the list of apps and 'select' the appropriate one.
 
 ```
 sudo ufw app list
 ```
-
 ..* After choosing enable the right one..
 
 ```
 sudo ufw allow 'Nginx HTTP'
 ```
-
 ..* Make sure its active..
 
 ```

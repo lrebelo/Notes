@@ -8,6 +8,13 @@
 
 > sudo pm2 start app.js
 
+## pm2 start on boot..
+
+For start on boot we can use the command `pm2 start app.js` ran as root, However we are better off using the ecosystem file for it.
+
+* Create an ecosystem file by.. `pm2 ecosystem`
+
+* 
 
 ----
 ###### References

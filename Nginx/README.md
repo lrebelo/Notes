@@ -31,6 +31,31 @@ sudo apt-get install nginx
 
 * Main configuration in `/etc/nginx/nginx.conf`
 
+#### Reverse Proxy config
+
+* Example:
+
+```
+proxy_set_header HOST $host;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_Header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+location /match/here {
+    proxy_pass http://example.com/new/prefix;
+}
+
+location /different/match {
+    proxy_pass http://example.com;
+}
+```
+
+
+
+---
+
+##### References
+
 `http://nginx.org/en/docs/stream/ngx_stream_proxy_module.html`
 
 `https://www.nginx.com/resources/admin-guide/reverse-proxy/`

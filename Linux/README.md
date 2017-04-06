@@ -15,3 +15,11 @@
 * SCP copy file with port
 
 ..* scp -P 2264 foobar.txt your_username@remotehost.edu:/some/remote/directory
+
+## SendEmail
+
+* website:
+
+> http://caspian.dotconf.net/menu/Software/SendEmail/
+
+`sendEmail -o tls=no -f <EMAIL FROM> -t <EMAIL TO> -s <SMTP SERVER> -xu <SERVER LOGIN> -xp <PASSWORD> -u <SUBJECT> -m <MESSAGE TO SEND>`

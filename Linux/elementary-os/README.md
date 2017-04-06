@@ -1,14 +1,14 @@
 # elementary OS 0.4
 
-###Adding a new application to the application menu..
+### Adding a new application to the application menu..
 
-go to _cd /usr/share/applications/_ 
+go to `cd /usr/share/applications/` 
 
 &
 
-_sudo touch NAMEofAPPLICATION.desktop_
+`sudo touch NAMEofAPPLICATION.desktop`
 
-then pas in it:
+then past in it:
 
 ```
 [Desktop Entry]

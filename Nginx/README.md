@@ -9,7 +9,7 @@
 
 ```
 apt-get install nginx
-``` 
+```
 
 ## Instalation for ubuntu16.04
 
@@ -17,7 +17,7 @@ apt-get install nginx
 
 ```
 sudo apt-get install nginx
-``` 
+```
 
 * Adjust the firewall
 
@@ -35,21 +35,25 @@ sudo apt-get install nginx
 
 * Example:
 
-```
-proxy_set_header HOST $host;
-proxy_set_header X-Forwarded-Proto $scheme;
-proxy_set_Header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    * What we would put in the /etc/nginx/sites/enabled/<domain>
 
-location /match/here {
-    proxy_pass http://example.com/new/prefix;
-}
-
-location /different/match {
-    proxy_pass http://example.com;
-}
 ```
 
+server {
+    listen 80;
+
+    server domain.com;
+
+    location /location2/{
+        proxy_pass http://xxx.xxx.xxx.xxx:3000/;
+    }
+    location /location1/{
+        proxy_pass http://xxx.xxx.xxx.xxx:3001/;
+        proxy_set_header HOST $host;
+    }
+}
+
+```
 
 
 ---
@@ -59,7 +63,3 @@ location /different/match {
 `http://nginx.org/en/docs/stream/ngx_stream_proxy_module.html`
 
 `https://www.nginx.com/resources/admin-guide/reverse-proxy/`
-
-
-
-

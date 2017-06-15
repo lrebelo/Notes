@@ -17,3 +17,7 @@
 * [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus)
 
 * [merge-conflicts](https://atom.io/packages/merge-conflicts) ???
+
+##### When ionic..
+
+* [ionic-preview](https://atom.io/packages/ionic-preview)

@@ -41,8 +41,9 @@ sudo apt-get install nginx
 
 server {
     listen 80;
+    listen [::]:80;
 
-    server domain.com;
+    server_name domain.com;
 
     location /location2/{
         proxy_pass http://xxx.xxx.xxx.xxx:3000/;

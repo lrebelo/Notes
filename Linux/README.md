@@ -75,3 +75,7 @@ fi
 ## `xinitrc`
 
 * nothing much to be said except that remember that we can write entire shell script loops into this file..
+
+## Battery information
+
+`upower -i /org/freedesktop/UPower/devices/battery_BAT0`

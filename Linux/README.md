@@ -76,6 +76,30 @@ fi
 
 * nothing much to be said except that remember that we can write entire shell script loops into this file..
 
+## `xrandr`
+
+* allows us to change the resolution of a screen even if the console we are using is not within the same X session.
+
+`xrandr -d :0 -s 1920x1080`
+
+
+```
+usage: xrandr [options]
+  where options are:
+  -display <display> or -d <display>
+  -help
+  -o <normal,inverted,left,right,0,1,2,3>
+            or --orientation <normal,inverted,left,right,0,1,2,3>
+  -q        or --query
+  -s <size>/<width>x<height> or --size <size>/<width>x<height>
+  -r <rate> or --rate <rate>
+  -v        or --version
+  -x        (reflect in x)
+  -y        (reflect in y)
+  --screen <screen>
+  --verbose
+```
+
 ## Battery information
 
 `upower -i /org/freedesktop/UPower/devices/battery_BAT0`

@@ -52,6 +52,12 @@ module.exports = {
 * Run the application by `pm2 start ecosystem.config.js --env prod_https`
   * the value to use after the `--env` is always the object name (ie. `env_prod_https`) but by removing the `env_`.
 
+## Start pm2 on boot
+
+* `pm2 startup ubuntu` - this will make any processes by the user currently logged in start on boot.
+
+* `pm2 startup ubuntu -u user --hp /home/user` - this will define the start of the pm2 service to be set by a specific user.
+
 ----
 ###### References
 

@@ -1,7 +1,7 @@
 # MongoDB install for debian Linux 8
 
 
-**I normally do this throught as root rather than sudo for spead sake**
+**I normally do this throught as root rather than sudo for speed sake**
 
 _echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list_
 
@@ -10,6 +10,8 @@ _apt-get update_
 _apt-get install mongodb-org_
 
 _service mongod start_
+
+_systemctl enable mongod_ - in debian and sometimes ubuntu the service does not get set to auto start on boot
 
 
 ###Setup /etc/mongodb.conf file

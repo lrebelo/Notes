@@ -2,7 +2,7 @@
 
 ### Adding a new application to the application menu..
 
-go to `cd /usr/share/applications/` 
+go to `cd /usr/share/applications/`
 
 &
 
@@ -25,3 +25,12 @@ StartupNotify=true
 
 save and press on the menu to see changes...
 If nothing happens its possibel its just not on the right Categorie OR the path to the bin is incorrect.
+
+## Scratch
+
+### Scratch keeps crashing
+
+`gsettings reset-recursively org.pantheon.scratch.settings`
+`gsettings reset-recursively org.pantheon.scratch.saved-state`
+
+execute and hope! :)

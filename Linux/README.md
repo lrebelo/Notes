@@ -103,3 +103,11 @@ usage: xrandr [options]
 ## Battery information
 
 `upower -i /org/freedesktop/UPower/devices/battery_BAT0`
+
+## Sound control bash
+
+`pacmd list-cards | grep output\:` - give us a list of all the available audio outputs.
+
+`pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo` - set audio output from both the analog and hdmi outputs. For the right output see the command that came before.
+
+`speaker-test` - makes an ungodly noise from the command line.. helpful for testing the sound.

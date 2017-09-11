@@ -31,3 +31,35 @@ Make the bin file executable: `chmod a+x atlassian-bitbucket-x.x.x-x64.bin`
 Launch the Jira installation as root:  `./atlassian-bitbucket-x.x.x-x64.bin`
 
 Once process is completed got to _http://IPOFSERVER:7990_
+
+## Bitbucket under nginx proxy_pass
+**using Bitbucket with nginx and ssl**
+
+Add the folling lines to the file `/var/atlassian/application-data/bitbucket/shared/bitbucket.properties`
+ If file does not exist, create it!
+
+`server.port=7990
+server.secure=true
+server.scheme=https
+server.proxy-port=443
+server.proxy-name=<DOMAIN_OF_LINK>`
+
+on the nginx configuration add:
+`server {
+
+    listen 443 ssl;
+
+    server_name <FULLY_QUALIFIED_DOMAIN_NAME>;
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+    location /{
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        proxy_pass <LOCATION_OF_BITBUCKET>;
+
+        client_max_body_size 10M;
+   }
+}`

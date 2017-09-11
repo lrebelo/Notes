@@ -38,14 +38,17 @@ Once process is completed got to _http://IPOFSERVER:7990_
 Add the folling lines to the file `/var/atlassian/application-data/bitbucket/shared/bitbucket.properties`
  If file does not exist, create it!
 
-`server.port=7990
+```
+server.port=7990
 server.secure=true
 server.scheme=https
 server.proxy-port=443
-server.proxy-name=<DOMAIN_OF_LINK>`
+server.proxy-name=<DOMAIN_OF_LINK>
+```
 
 on the nginx configuration add:
-`server {
+```
+server {
 
     listen 443 ssl;
 
@@ -62,4 +65,5 @@ on the nginx configuration add:
 
         client_max_body_size 10M;
    }
-}`
+}
+```

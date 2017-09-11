@@ -56,6 +56,51 @@ server {
 
 ```
 
+#### Add HTTPS (SSL) to the configuration.
+
+Create a directory where to store the certificates:
+`mkdir /etc/nginx/ssl`
+
+Generate the certificate by doing:
+`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt`
+
+We can create multiple certificates for diferent hostnames.
+
+Then add the following basic configation to nginx to set your link as https.
+
+```
+server {
+
+    listen 443 ssl;
+
+    server_name <FQDN>;
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+    location /{
+        proxy_pass http://xxx.xxx.xxx.xxx:3002/;
+    }
+
+}
+
+```
+
+#### Auto redirect all _http_ request to _https_
+
+With the code bellow all _http_ subdomains get redirected to _https_
+
+```
+server {
+
+    listen 80;
+
+    server_name *.<example.com>;
+
+    return 301 https://$host$request_uri;
+}
+
+```
+
 
 ---
 
@@ -64,3 +109,5 @@ server {
 `http://nginx.org/en/docs/stream/ngx_stream_proxy_module.html`
 
 `https://www.nginx.com/resources/admin-guide/reverse-proxy/`
+
+`https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-nginx-for-ubuntu-14-04`

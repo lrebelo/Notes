@@ -20,7 +20,7 @@ Restart postgresql to apply settings: `service postgresql restart`
 
 Login to postgresql with your new user `psql -U jirauser template1`
 
-* Create your bitbucket database ( in this example _bitbucketdb_ ) with `CREATE DATABASE jiradb WITH ENCODING 'UNICODE' LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0;`
+* Create your Jira database ( in this example _jiradb_ ) with `CREATE DATABASE jiradb WITH ENCODING 'UNICODE' LC_COLLATE 'C' LC_CTYPE 'C' TEMPLATE template0;`
 * Grant all privileges to the newly created database with `GRANT ALL PRIVILEGES ON DATABASE jiradb TO 'jirauser';`
 
 

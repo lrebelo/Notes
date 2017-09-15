@@ -101,6 +101,25 @@ server {
 
 ```
 
+#### Proxy headers
+
+```
+proxy_set_header        Host $host;
+proxy_set_header        X-Real-IP $remote_addr;
+proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header        X-Forwarded-Proto $scheme;
+client_max_body_size    500M;
+```
+
+These pass the client information to the server. So if the client connects using a certain FQDN it will pass that to the server.
+The line `client_max_body_size    500M;` sets the maximum upload/download for the proxy content. So if the client tried to uplaod a 501M file it will fail, but a 499M file will go through.
+
+#### Snippets
+
+Very easy to add, if no snippets folder does not exist in `/etc/nginx/snippets` create it.
+Then add files that end with `.conf`
+
+To add your snippets to your nginx code add `include /etc/nginx/snippets/<NAME_OF_SNIPPETS>.conf`
 
 ---
 

@@ -8,13 +8,13 @@
 
 * Master of masters (UI)
 
-  * Load Balencer
+  * Load Balancer
 
-    * Computaional Node
+    * Computational Node
 
-    * Computaional Node
+    * Computational Node
 
-_the more notes the more we need to setup computatintal nodes_
+_the more notes the more we need to setup computational nodes_
 
 _one computational node per 30~ puppet nodes (with out any lag)_
 

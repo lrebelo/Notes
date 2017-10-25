@@ -1,7 +1,4 @@
-## Puppet is one of the leading platform for automatically delivering,
-operating and securing your infrastructure. In this scenario we are installing
-a master and an agent respectively named puppet-master and puppet-agent.
-The following is based on the open source project and both master and agent are Debian 8.0.
+# Puppet Open Source installation
 
 ### How to setup the master.
 Define the hostname in /etc/hosts and /etc/hostname ( for example puppet-master ).
@@ -57,7 +54,7 @@ Update your repositories with `sudo apt-get update`
 
 Install puppet agent with `sudo apt-get install puppet-agent`
 
-Start the service with `sudo service puppet start` 
+Start the service with `sudo service puppet start`
 
 Add the **FQDN** of the server to the `puppet.conf` (`/etc/puppetlabs/puppet/puppet.conf`) file ( puppet-agent.localdomain )
 

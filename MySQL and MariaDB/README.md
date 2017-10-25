@@ -38,7 +38,7 @@ REVOKE [type of permission] ON [database name].[table name] FROM ‘[username]�
 DROP USER ‘<USERNAME>’@‘localhost’;
 ```
 
-* The diferent permissions are:
+* The different permissions are:
 ..* ALL PRIVILEGES - as we saw previously, this would allow a MySQL user all access to a designated database (or if no database is selected, across the system)
 ..* CREATE - allows them to create new tables or databases
 ..* DROP - allows them to them to delete tables or databases
@@ -48,13 +48,15 @@ DROP USER ‘<USERNAME>’@‘localhost’;
 ..* UPDATE - allow them to update table rows
 ..* GRANT OPTION - allows them to grant or remove other users' privileges
 
+
+
+## Check db user list
+
+`SELECT User, Host, Password FROM mysql.user;`
+
 ---
 ##### References
 
 ```
 https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
-``` 
-
-
-
-
+```

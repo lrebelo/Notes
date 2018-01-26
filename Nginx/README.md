@@ -35,7 +35,7 @@ sudo apt-get install nginx
 
 * Example:
 
-    * What we would put in the /etc/nginx/sites/enabled/<domain>
+    * What we would put in the /etc/nginx/sites-enabled/<domain>
 
 ```
 
@@ -100,6 +100,47 @@ server {
 }
 
 ```
+
+#### Reverse Streaming Proxy config
+
+* Example:
+
+    * What we would append to the /etc/nginx/nginx.conf
+
+```
+
+stream {
+    server {
+        listen            6767; #External port to listen to
+        proxy_pass        xxx.xxx.xxx.xxx:22; #Example for an ssh stream
+        proxy_buffer_size 3m;
+    }
+}
+
+```
+
+* We could also setup a folder inside the nginx directory and append the following lines to the nginx.conf
+
+```
+
+stream {
+    include /etc/nginx/streams-enabled/*;
+}
+
+```
+
+* And add a file inside that directory with the following lines (don't forget to add the folder!)
+
+```
+
+server {
+    listen            6767; #External port to listen to
+    proxy_pass        xxx.xxx.xxx.xxx:22; #Example for an ssh stream
+    proxy_buffer_size 3m;
+}
+
+```
+
 
 #### Proxy headers
 

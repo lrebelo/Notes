@@ -100,6 +100,16 @@ usage: xrandr [options]
   --verbose
 ```
 
+### DisplayLink adapters
+
+I got myself a USB2.0 DisplayLink adapter that works +/-
+However by default it only does 1024x7268..
+`xrandr` can solve that thought!
+`xrandr --addmode DVI-I-1-1 1366x768`
+
+My device came up as `DVI-I-1-1` when doing an `xrandr`.
+This allowed me to set the screen with the resolution I wanted in `arandr`.
+
 ## Battery information
 
 `upower -i /org/freedesktop/UPower/devices/battery_BAT0`

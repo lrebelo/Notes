@@ -121,3 +121,76 @@ This allowed me to set the screen with the resolution I wanted in `arandr`.
 `pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo` - set audio output from both the analog and hdmi outputs. For the right output see the command that came before.
 
 `speaker-test` - makes an ungodly noise from the command line.. helpful for testing the sound.
+
+## Linux File System Tools/Commands
+
+
+`rsync -autzv _SOURCE_ _DESTINATION_` - recursive sync/copy tool(options are for: a archive, u update, t times, z compress, v verbose)
+
+`//192.168.1.256/share  /media/share  cifs  guest,uid=1000,iocharset=utf8  0  0` - mount as a guest
+
+`//192.168.1.256/share       /media/share  cifs username=USERNAME, password=PASSWORD, iocharset=utf8, sec=ntlm 0 0` - mounting samba on boot
+
+To add a space on in the path replace the space `\040`
+
+`df -h` - report file system disk space usage(h for human, m for megs)
+
+`blkid` - as root to find the UUID of local drives
+
+
+## Nodejs LTS (8.x) install for debian Linux 8
+
+
+**I normally do this throught as root rather than sudo for spead sake when configuring on a server not a dev machine**
+
+`curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -`
+
+`sudo apt-get install nodejs_`
+
+`apt-get install build-essential`
+
+**IF using ElementaryOS Loki**
+
+- go: `sudo nano /etc/apt/sources.list.d/nodesource.list` and change the distro name to xenial as the rep has no hook for loki
+
+
+**If upgrading..**
+
+`apt-get purge nodejs npm`
+
+
+## MongoDB install for debian Linux 8
+
+
+**I normally do this through root rather than sudo for speed sake**
+
+`echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list`
+
+`apt-get update`
+
+`apt-get install mongodb-org`
+
+`service mongod start`
+
+`systemctl enable mongod` - in debian and sometimes ubuntu the service does not get set to auto start on boot
+
+
+### Setup /etc/mongodb.conf file
+
+`bindIp: 0.0.0.0` - setup to access from all IPs (or restrict for specific ranges or IPs)
+
+#### Security
+
+`db.createUser({user: "admin", pwd: "password", roles: [ { role: "userAdminAnyDatabase", db: "admin" }]} )`
+
+_security:_
+_authorization: "enabled"_  - Only add this after creating the admin user
+
+
+### Assorted Commands
+
+`use db` - use an existing db, if it doesn't it will create it uong data entry.
+
+`show dbs` - show list of databases.
+
+`show collections` - show list of collections.

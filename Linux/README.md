@@ -63,6 +63,12 @@ EndSection
 * when needing to `echo` out a shell script the `#!/bin/bash` will cause issues due to the `!` so we can use the following command before said `echo`
     * `set +o histexpand`
 
+## `curl`
+
+`curl https://github.com`
+
+* headers can be added with `-H "auth: <password>"`
+
 ## `BASH` configuration(s)
 
 * When wanting to start X as soon as `bash` starts we can use the following lines by appending them to the `.bash_profile` file.

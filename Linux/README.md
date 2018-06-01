@@ -133,6 +133,8 @@ This allowed me to set the screen with the resolution I wanted in `arandr`.
 
 To add a space on in the path replace the space `\040`
 
+ Install `sudo apt-get install cifs-utils` to be able to use samba at boot time.
+
 `df -h` - report file system disk space usage(h for human, m for megs)
 
 `blkid` - as root to find the UUID of local drives

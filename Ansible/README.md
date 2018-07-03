@@ -45,6 +45,10 @@ To execute a playbook we do `ansible-playbook -i <playbookname>.yml`
 
 To execute a playbook with external given variables we do `ansible-playbook -i hosts <playbookname>.yml -e "variwant=VALUEONE" -e "secondvariwant=VALUETWO`
 
+## to create passwords
+
+run command `mkpasswd --method=sha-512`
+
 
 _work in progress..._
 

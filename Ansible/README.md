@@ -49,6 +49,14 @@ To execute a playbook with external given variables we do `ansible-playbook -i h
 
 run command `mkpasswd --method=sha-512`
 
+## using ssh-keygen in ansible
+
+```
+- name: ssh keygen
+  command: 'ssh-keygen -t rsa -f /home/user/.ssh/id_rsa -q -N ""'
+  args:
+    creates: /home/user/.ssh/id_rsa
+```
 
 _work in progress..._
 

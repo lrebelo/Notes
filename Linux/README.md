@@ -18,6 +18,14 @@
 
     * `scp -P 2264 foobar.txt your_username@remotehost.edu:/some/remote/directory`
 
+---
+## SSH(ing) into dlink NASs
+
+* DLINK uses a legacy ssh encrytion _ssh-dss_
+
+    * `ssh -oHostKeyAlgorithms=+ssh-dss root@192.168.8.109`
+
+---
 ## SendEmail
 
 * website:

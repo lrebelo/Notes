@@ -34,3 +34,15 @@ If nothing happens its possibel its just not on the right Categorie OR the path 
 `gsettings reset-recursively org.pantheon.scratch.saved-state`
 
 execute and hope! :)
+
+## BOOTing on old intel based macs (tested on gen3)
+
+Edit `nano /etc/default/grub`
+
+add `video=SVIDEO-1:d` so that it looks like:
+
+`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=SVIDEO-1:d"`
+
+`update-grub` & reboot
+
+(all as root... )

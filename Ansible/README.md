@@ -58,6 +58,16 @@ run command `mkpasswd --method=sha-512`
     creates: /home/user/.ssh/id_rsa
 ```
 
+## stop the warnings!
+
+Add this to stop warning on specific command.
+
+```
+  args:
+      warn: false
+```
+
+
 _work in progress..._
 
 ***

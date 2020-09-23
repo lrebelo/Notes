@@ -68,7 +68,7 @@ Add this to stop warning on specific command.
 ```
 
 
-_work in progress..._
+_work in progress... (and forever it will be...)_
 
 ***
 

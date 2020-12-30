@@ -1,5 +1,44 @@
 # NextCloud
 
+### Ubuntu SNAP install
+
+#### Configuration with nginx reverse proxy
+
+##### nginx config
+
+Add 
+```
+proxy_set_header Host            $host;
+proxy_set_header X-Real-IP       $proxy_protocol_addr;
+proxy_set_header X-Forwarded-For $proxy_protocol_addr;
+server_tokens off;
+client_max_body_size 10000M;
+
+proxy_set_header X-Content-Type-Options nosniff;
+proxy_set_header X-XSS-Protection "1; mode=block";
+proxy_set_header X-Robots-Tag none;
+proxy_set_header X-Download-Options noopen;
+proxy_set_header X-Permitted-Cross-Domain-Policies none;
+proxy_set_header Referrer-Policy no-referrer;
+```
+
+##### Nextcloud config
+When using an nginx reverse proxy with https.. 
+
+In the `/var/snap/nextcloud/current/nextcloud/config/config.php` 
+we need to add the line
+```'overwriteprotocol' => 'https',``` 
+
+Add: 
+```'trusted_domains' =>
+  array (
+    0 => 'nexcloud.mydomain.meow',
+  ),
+  ```
+
+
+
+
 ### Debian 9.1 installation
 Install pre-requisites:
 

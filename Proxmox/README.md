@@ -88,3 +88,12 @@ On the PVE host make the following alterations:
 On the VM qemu config (ie:`/etc/pve/qemu-server/119.conf`):  
 1. Make sure to make the CPU == host
 2. Add in the file `args: -cpu host` (for amd `args: -cpu host,+svm`)
+
+### HYPER-V nested virtualization is a pain...
+
+wip
+```
+cpu: host
+args: -cpu host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
+machine: pc-i440fx-2.11
+```

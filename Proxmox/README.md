@@ -97,3 +97,13 @@ cpu: host
 args: -cpu host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
 machine: pc-i440fx-2.11
 ```
+
+in certain "let good" CPUs we can not use the full code above.
+```
+args: -cpu SandyBridge,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
+```
+
+A minimalist configuration incase of emergency (untested):
+```
+args: -cpu SandyBridge,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+vmx
+```

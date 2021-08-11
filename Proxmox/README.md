@@ -1,11 +1,83 @@
 # Proxmox Notes
 
-## Removing a dead Node from a Cluster
+## Removing a dead (or soon to be) Node from a Cluster
+
+We can get a list of nodes by running: `pvecm nodes`
+
+We should get an output like:
+```
+Membership information
+----------------------
+Nodeid Votes Name
+1 1 proxmox-node1 (local)
+2 1 proxmox-node2
+3 1 proxmox-node3
+```
+
+to remove a node:
+* Migrate all VMs from node before the last shutdown (also any local held data)
+* Shudown the node for the last time
+* Wipe the OS from the node so that no "accidents" happen later. If the node comes backup after removal it will cause _problems_.
+* On a live node run: `pvecm delnode proxmox-node3` 
 
 ## If we want a node to have more votes
 
-On the server you want to have more votes change in `/etc/pve/corsync.conf` the `quorum_votes: 1` to `quorum_votes: 2`. 
+On the server you want to have more votes change in `/etc/pve/corsync.conf` the `quorum_votes: 1` to `quorum_votes: 2`.
+
 Beware that this only lasts untill the next reboot of the PVE server, at that stage it resets back to `quorum_votes: 1`.
+
+## Activate IOMMU
+
+Go to and edit `nano /etc/default/grub` and change the line `GRUB_CMDLINE_LINUX_DEFAULT=""` and add `intel_iommu=on`(intel) or `amd_iommu=on`(amd).
+
+Then run `update-grub`. 
+
+Then add to file `nano /etc/modules` the folowing lines:
+```
+vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqfd
+```
+
+Then reboot. After that validate by running: `dmesg | grep -e DMAR -e IOMMU`
+
+**Beware that this only works on machines with `VT-d`**
+
+## Nested virtualization
+
+On the PVE host make the following alterations:  
+1. `cat /sys/module/kvm_intel/parameters/nested`
+2. We should get a `N`
+3. `echo "options kvm-intel nested=Y" > /etc/modprobe.d/kvm-intel.conf`
+4. `modprobe kvm_intel`
+5. `modprobe -r kvm_intel`
+6. `cat /sys/module/kvm_intel/parameters/nested`
+7. We should get a `Y`
+8. Reboot the pve, upon reboot it should be working ok.
+
+On the VM qemu config (ie:`/etc/pve/qemu-server/119.conf`):  
+1. Make sure to make the CPU == host
+2. Add in the file `args: -cpu host` (for amd `args: -cpu host,+svm`)
+
+### HYPER-V nested virtualization is a pain...
+
+wip
+```
+cpu: host
+args: -cpu host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
+machine: pc-i440fx-2.11
+```
+
+in certain "let good" CPUs we can not use the full code above.
+```
+args: -cpu SandyBridge,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
+```
+
+A minimalist configuration incase of emergency (untested):
+```
+args: -cpu SandyBridge,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+vmx
+```
 
 ## Convert VM hdd from other Hypervisors
 
@@ -72,38 +144,3 @@ else
 fi
 ```
 Converter bash script (copied from https://github.com/guestisp/xen-to-pve)
-
-## Nested virtualization
-
-On the PVE host make the following alterations:  
-1. `cat /sys/module/kvm_intel/parameters/nested`
-2. We should get a `N`
-3. `echo "options kvm-intel nested=Y" > /etc/modprobe.d/kvm-intel.conf`
-4. `modprobe kvm_intel`
-5. `modprobe -r kvm_intel`
-6. `cat /sys/module/kvm_intel/parameters/nested`
-7. We should get a `Y`
-8. Reboot the pve, upon reboot it should be working ok.
-
-On the VM qemu config (ie:`/etc/pve/qemu-server/119.conf`):  
-1. Make sure to make the CPU == host
-2. Add in the file `args: -cpu host` (for amd `args: -cpu host,+svm`)
-
-### HYPER-V nested virtualization is a pain...
-
-wip
-```
-cpu: host
-args: -cpu host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
-machine: pc-i440fx-2.11
-```
-
-in certain "let good" CPUs we can not use the full code above.
-```
-args: -cpu SandyBridge,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer,-hypervisor
-```
-
-A minimalist configuration incase of emergency (untested):
-```
-args: -cpu SandyBridge,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+vmx
-```

@@ -8,6 +8,14 @@
 `Arandr` - application to configure multiple screens on debian based systems(and others?)
 
 ---
+### Meraki VPN
+
+So Meraki (MX64 < [MX 15.43]) VPN uses l2tp.
+Since around april 2021 there was a strongSwan update that renders the [instructions](https://documentation.meraki.com/MX/Client_VPN/Client_VPN_OS_Configuration) given by Cisco useless!
+
+We can follow all the bits in the instructions except when it comes to the "phase 1 & phase 2" we should use `3des-sha1-modp1024!` & `3des-sha1!` respectively.
+
+---
 ## SCP command
 
 * SCP copy a folder to remote server

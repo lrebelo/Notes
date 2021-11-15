@@ -1,0 +1,126 @@
+<Conrep>
+	<global>
+		<helptext><![CDATA[
+
+		This is the input file for CONREP describing Reserved Memory Region Device Scope(RMRDS) entries.
+		Endpoints_Included = All endpoints in slot should be included in Reserved Memory Region Device Scope entries (default for all slots)
+		Endpoints_Excluded = All endpoints in slot should be excluded from Reserved Memory Region Device Scope entries
+
+		]]></helptext>
+		<fileversion>1.00</fileversion>
+		<minimumconrepversion>3.40</minimumconrepversion>
+		<onmismatch>exception</onmismatch>
+	</global>
+	<Section name="RMRDS_Slot1">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x01">Endpoints_Excluded</value>
+		<mask>0x01</mask>
+	</Section>
+	<Section name="RMRDS_Slot2">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x02">Endpoints_Excluded</value>
+		<mask>0x02</mask>
+	</Section>
+	<Section name="RMRDS_Slot3">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x04">Endpoints_Excluded</value>
+		<mask>0x04</mask>
+	</Section>
+	<Section name="RMRDS_Slot4">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x08">Endpoints_Excluded</value>
+		<mask>0x08</mask>
+	</Section>
+	<Section name="RMRDS_Slot5">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x10">Endpoints_Excluded</value>
+		<mask>0x10</mask>
+	</Section>
+	<Section name="RMRDS_Slot6">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x20">Endpoints_Excluded</value>
+		<mask>0x20</mask>
+	</Section>
+	<Section name="RMRDS_Slot7">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x40">Endpoints_Excluded</value>
+		<mask>0x40</mask>
+	</Section>
+	<Section name="RMRDS_Slot8">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26A</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x80">Endpoints_Excluded</value>
+		<mask>0x80</mask>
+	</Section>
+	<Section name="RMRDS_Slot9">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x01">Endpoints_Excluded</value>
+		<mask>0x01</mask>
+	</Section>
+	<Section name="RMRDS_Slot10">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x02">Endpoints_Excluded</value>
+		<mask>0x02</mask>
+	</Section>
+	<Section name="RMRDS_Slot11">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x04">Endpoints_Excluded</value>
+		<mask>0x04</mask>
+	</Section>
+	<Section name="RMRDS_Slot12">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x08">Endpoints_Excluded</value>
+		<mask>0x08</mask>
+	</Section>
+	<Section name="RMRDS_Slot13">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x10">Endpoints_Excluded</value>
+		<mask>0x10</mask>
+	</Section>
+	<Section name="RMRDS_Slot14">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x20">Endpoints_Excluded</value>
+		<mask>0x20</mask>
+	</Section>
+	<Section name="RMRDS_Slot15">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x40">Endpoints_Excluded</value>
+		<mask>0x40</mask>
+	</Section>
+	<Section name="RMRDS_Slot16">
+		<helptext><![CDATA[.]]></helptext>	
+		<nvram>0x26B</nvram>
+		<value id="0x00">Endpoints_Included</value>
+		<value id="0x80">Endpoints_Excluded</value>
+		<mask>0x80</mask>
+	</Section>
+</Conrep>
